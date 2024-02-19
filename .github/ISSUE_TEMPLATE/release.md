@@ -28,6 +28,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
   - [ ] (On the **Master** Branch) Created and merged an empty commit with `git commit --allow-empty -s -m "Empty commit after release-X.Y"`
   - [ ] (On the **Master** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
   - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested, but not required: `Release candidate vX.Y.0-rc.1.`.
+  - [ ] Published a [new release][new runtime release] for the tagged version, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
 - [ ] **[In Core Crossplane]:** Prepared the release branch `release-X.Y`:
   - [ ] Created the release branch using the [GitHub UI][create-branch].
   - [ ] (On the **Master** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag from master, `vX.Y+1.0-rc.0`.
@@ -78,6 +79,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
 [create-branch]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-and-deleting-branches-within-your-repository
 [docs release issue]: https://github.com/crossplane/docs/issues/new?assignees=&labels=release&template=new_release.md&title=Release+Crossplane+version...+
 [new release]: https://github.com/crossplane/crossplane/releases/new
+[new runtime release]: https://github.com/crossplane/crossplane-runtime/releases/new
 [owners]: https://github.com/crossplane/crossplane/blob/master/OWNERS.md
 [promote-workflow]: https://github.com/crossplane/crossplane/actions/workflows/promote.yml
 [release-1.14.0]: https://github.com/crossplane/crossplane/issues/4871
