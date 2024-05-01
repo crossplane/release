@@ -62,6 +62,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
   - [ ] The [releases table] in the `README.md`, removing the now old unsupported release and adding the new one.
   - [ ] The `baseBranches` list in `.github/renovate.json5`, removing the now old unsupported release and adding the new one.
 - [ ] Closed the GitHub milestone for this release.
+- [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.upbound.io/stable/ and https://releases.crossplane.io/stable/ 
 - [ ] Publish a blog post about the release to the [crossplane blog]
   - https://blog.crossplane.io/crossplane-v1-14/
 - [ ] Ensured that users have been notified of the release on all communication channels:
