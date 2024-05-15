@@ -65,7 +65,6 @@ examples of each step, assuming release vX.Y.0 is being cut.
 - [ ] Closed the GitHub milestone for this release.
 - [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.upbound.io/stable/ and https://releases.crossplane.io/stable/ 
 - [ ] Publish a blog post about the release to the [crossplane blog]
-  - https://blog.crossplane.io/crossplane-v1-14/
 - [ ] Ensured that users have been notified of the release on all communication channels:
   - [ ] Slack: `#announcements` channel on Crossplane's Slack workspace.
   - [ ] Twitter: reach out to a Crossplane maintainer or steering committee member, see [OWNERS.md][owners].
