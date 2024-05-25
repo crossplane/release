@@ -28,12 +28,12 @@ examples of each step, assuming release vX.Y.0 is being cut.
   - [ ] (On the **Master** Branch) Created and merged an empty commit with `git commit --allow-empty -s -m "Empty commit after release-X.Y"`
   - [ ] (On the **Master** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
   - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested, but not required: `Release candidate vX.Y.0-rc.1.`.
-  - [ ] Published a [new release][new runtime release] for the tagged version, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
 - [ ] **[In Core Crossplane]:** Prepared the release branch `release-X.Y`:
   - [ ] Created the release branch using the [GitHub UI][create-branch].
   - [ ] (On the **Master** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag from master, `vX.Y+1.0-rc.0`.
   - [ ] (On the **Release** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag on the release branch, `vX.Y.0-rc.1`.
   - [ ] (On the **Master** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the next release, `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
+  - [ ] (On the **Master** Branch) created and merged a PR to add the new release branch to the `baseBranches` list in `.github/renovate.json5`.
 - [ ] **[In Core Crossplane]:** Cut a Crossplane **release candidate** from the release branch `release-X.Y`:
   - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested but not required: `Release candidate vX.Y.0-rc.1.`.
   - [ ] (On the **Release** Branch) Run the [CI workflow][ci-workflow] and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.0-rc.1/...` should contain all the relevant binaries.
@@ -51,20 +51,20 @@ examples of each step, assuming release vX.Y.0 is being cut.
 - [ ] Opened a [docs release issue]
 - [ ] Checked that the [GitHub milestone] for this release only contains closed issues.
 - [ ] Cut a Crossplane Runtime version and consume it from Crossplane.
-  - [ ] **[In Crossplane Runtime]**: Run the [Tag workflow][tag-workflow-runtime] on the `release-X.Y` branch with the proper release version, `vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`.
+  - [ ] **[In Crossplane Runtime]**: Run the [Tag workflow][tag-workflow-runtime] on the `release-X.Y` branch with the proper release version, `vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`.
+  - [ ] Published a [new release][new runtime release] for the tagged version, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
   - [ ] **[In Core Crossplane]:** (On the **Release** Branch) Update the Crossplane Runtime dependency to `vX.Y.0`.
-- [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the proper release version, `vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`.
+- [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the proper release version, `vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`.
 - [ ] (On the **Release** Branch) Run the [CI workflow][ci-workflow] and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.0/...` should contain all the relevant binaries.
 - [ ] (On the **Release** Branch) Run the [Promote workflow][promote-workflow] with channel `stable` and verified that the tagged build version exists on the [releases.crossplane.io] `stable` channel at `stable/vX.Y.0/...`.
 - [ ] Published a [new release] for the tagged version, with the same name as the version and descriptive release notes, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor. Before publishing the release notes, set them as Draft and ask the rest of the team to double check them.
 - [ ] Checked that the [docs release issue] created previously has been completed.
 - [ ] Updated, in a single PR, the following on `master`:
   - [ ] The [releases table] in the `README.md`, removing the now old unsupported release and adding the new one.
-  - [ ] The `baseBranches` list in `.github/renovate.json5`, removing the now old unsupported release and adding the new one.
+  - [ ] The `baseBranches` list in `.github/renovate.json5`, removing the now old unsupported release.
 - [ ] Closed the GitHub milestone for this release.
 - [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.upbound.io/stable/ and https://releases.crossplane.io/stable/ 
 - [ ] Publish a blog post about the release to the [crossplane blog]
-  - https://blog.crossplane.io/crossplane-v1-14/
 - [ ] Ensured that users have been notified of the release on all communication channels:
   - [ ] Slack: `#announcements` channel on Crossplane's Slack workspace.
   - [ ] Twitter: reach out to a Crossplane maintainer or steering committee member, see [OWNERS.md][owners].
