@@ -57,7 +57,11 @@ examples of each step, assuming release vX.Y.0 is being cut.
 - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the proper release version, `vX.Y.0`. Message suggested, but not required: `Release vX.Y.0`.
 - [ ] (On the **Release** Branch) Run the [CI workflow][ci-workflow] and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.0/...` should contain all the relevant binaries.
 - [ ] (On the **Release** Branch) Run the [Promote workflow][promote-workflow] with channel `stable` and verified that the tagged build version exists on the [releases.crossplane.io] `stable` channel at `stable/vX.Y.0/...`.
-- [ ] Published a [new release] for the tagged version, with the same name as the version and descriptive release notes, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor. Before publishing the release notes, set them as Draft and ask the rest of the team to double check them.
+- [ ] Select a release MVP from the community that had significant impact on the release and include recognition of them in the release notes and blog post.
+- [ ] Published a [new release] for the tagged version, with the same name as the version and descriptive release notes
+  - [ ] generate the changes list by selecting the "Previous tag" as `vX.<Y-1>.0`, i.e., the first of the releases for the previous minor.
+  - [ ] Ensure the release MVP is recognized in the release notes.
+  - [ ] Before publishing the release notes, set them as Draft and ask the rest of the team to double check them.
 - [ ] Checked that the [docs release issue] created previously has been completed.
 - [ ] Updated, in a single PR, the following on `master`:
   - [ ] The [releases table] in the `README.md`, removing the now old unsupported release and adding the new one.
@@ -65,6 +69,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
 - [ ] Closed the GitHub milestone for this release.
 - [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.upbound.io/stable/ and https://releases.crossplane.io/stable/ 
 - [ ] Publish a blog post about the release to the [crossplane blog]
+  - [ ] Ensure the release MVP is recognized in the blog post
 - [ ] Ensured that users have been notified of the release on all communication channels:
   - [ ] Slack: `#announcements` channel on Crossplane's Slack workspace.
   - [ ] Twitter: reach out to a Crossplane maintainer or steering committee member, see [OWNERS.md][owners].
