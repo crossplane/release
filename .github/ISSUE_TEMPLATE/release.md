@@ -25,20 +25,20 @@ examples of each step, assuming release vX.Y.0 is being cut.
 
 - [ ] Determine if any patch releases are needed in addition to this main release and open a [new patch release issue][new-patch-release-issue] for each.
 - [ ] **[In Crossplane Runtime]**: Prepared the release branch `release-X.Y`:
-  - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into `master`
+  - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into `main`
     - https://github.com/crossplane/crossplane-runtime/pulls?q=is%3Apr+is%3Aopen+label%3Aautomated
   - [ ] Created the release branch using the [GitHub UI][create-branch].
-  - [ ] (On the **Master** Branch) Created and merged an empty commit with `git commit --allow-empty -s -m "Empty commit after release-X.Y"`
-  - [ ] (On the **Master** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
+  - [ ] (On the **Main** Branch) Created and merged an empty commit with `git commit --allow-empty -s -m "Empty commit after release-X.Y"`
+  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
   - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested, but not required: `Release candidate vX.Y.0-rc.1.`.
 - [ ] **[In Core Crossplane]:** Prepared the release branch `release-X.Y`:
-  - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into `master`
+  - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into `main`
     - https://github.com/crossplane/crossplane/pulls?q=is%3Apr+is%3Aopen+label%3Aautomated
   - [ ] Created the release branch using the [GitHub UI][create-branch].
-  - [ ] (On the **Master** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag from master, `vX.Y+1.0-rc.0`.
+  - [ ] (On the **Main** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag from , `vX.Y+1.0-rc.0`.
   - [ ] (On the **Release** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag on the release branch, `vX.Y.0-rc.1`.
-  - [ ] (On the **Master** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the next release, `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
-  - [ ] (On the **Master** Branch) created and merged a PR to add the new release branch to the `baseBranches` list in `.github/renovate.json5`.
+  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the next release, `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
+  - [ ] (On the **Main** Branch) created and merged a PR to add the new release branch to the `baseBranches` list in `.github/renovate.json5`.
 - [ ] **[In Core Crossplane]:** Cut a Crossplane **release candidate** from the release branch `release-X.Y`:
   - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested but not required: `Release candidate vX.Y.0-rc.1.`.
   - [ ] (On the **Release** Branch) Run the [CI workflow][ci-workflow] and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.0-rc.1/...` should contain all the relevant binaries.
@@ -47,7 +47,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
     - [ ] The tagged build is NOT marked as "current" in [stable/current/version](https://releases.crossplane.io/stable/current/version).
     - [ ] Ensured that the release candidate is visible on the stable helm repo with: `helm repo add crossplane-stable https://charts.crossplane.io/stable --force-update &&  helm search repo crossplane-stable --devel`.
   - [ ] Published a [new release] for the tagged version as `pre-release`, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
-    - [ ] Select the `Set as a pre-release` and `Create a discussion for this release` checkboxes. 
+    - [ ] Select the `Set as a pre-release` and `Create a discussion for this release` checkboxes.
     - [ ] Do NOT select the `Set as the latest release` checkbox.
   - [ ] Ensured that users have been notified about the release candidate on the `#announcement` channel of the Crossplane's Slack workspace.
 
@@ -68,11 +68,11 @@ examples of each step, assuming release vX.Y.0 is being cut.
   - [ ] Ensure the release MVP is recognized in the release notes.
   - [ ] Before publishing the release notes, set them as Draft and ask the rest of the team to double check them.
 - [ ] Checked that the [docs release issue] created previously has been completed.
-- [ ] Updated, in a single PR, the following on `master`:
+- [ ] Updated, in a single PR, the following on `main`:
   - [ ] The [releases table] in the `README.md`, removing the now old unsupported release and adding the new one.
   - [ ] The `baseBranches` list in `.github/renovate.json5`, removing the now old unsupported release.
 - [ ] Closed the GitHub milestone for this release.
-- [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.crossplane.io/stable/ and https://releases.crossplane.io/stable/ 
+- [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.crossplane.io/stable/ and https://releases.crossplane.io/stable/
 - [ ] Publish a blog post about the release to the [crossplane blog]
   - [ ] Ensure the release MVP is recognized in the blog post
 - [ ] Ensured that users have been notified of the release on all communication channels:
@@ -92,7 +92,7 @@ examples of each step, assuming release vX.Y.0 is being cut.
 [docs release issue]: https://github.com/crossplane/docs/issues/new?assignees=&labels=release&template=new_release.md&title=Release+Crossplane+version...+
 [new release]: https://github.com/crossplane/crossplane/releases/new
 [new runtime release]: https://github.com/crossplane/crossplane-runtime/releases/new
-[owners]: https://github.com/crossplane/crossplane/blob/master/OWNERS.md
+[owners]: https://github.com/crossplane/crossplane/blob/main/OWNERS.md
 [promote-workflow]: https://github.com/crossplane/crossplane/actions/workflows/promote.yml
 [release-1.14.0]: https://github.com/crossplane/crossplane/issues/4871
 [releases table]: https://github.com/crossplane/crossplane#releases
