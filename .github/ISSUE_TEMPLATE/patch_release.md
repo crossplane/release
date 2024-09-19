@@ -27,7 +27,7 @@ examples of each step, assuming vX.Y.Z is being cut.
   - NOTE: This ordering requirement can be avoided by checking the "pre-release" checkbox in the promote workflow for the older releases, as described in [#5420].
 - [ ] Run the [Promote workflow][promote-workflow] with channel `stable` on the `release-X.Y` branch and verified that the tagged build version exists on the [releases.crossplane.io] `stable` channel at `stable/vX.Y.Z/...`.
 - [ ] Published a [new release] for the tagged version, with the same name as the version and descriptive release notes, taking care of generating the changes list selecting as "Previous tag" `vX.Y.<Z-1>`, so the previous patch release for the same minor. Before publishing the release notes, set them as Draft and ask the rest of the team to double check them.
-- [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.crossplane.io/stable/ and https://releases.crossplane.io/stable/ 
+- [ ] Request @jbw976 to perform a CloudFront cache invalidation on https://charts.crossplane.io/stable/ and https://releases.crossplane.io/stable/
 - [ ] Ensured that users have been notified of the release on all communication channels:
   - [ ] Slack: `#announcements` channel on Crossplane's Slack workspace.
   - [ ] Twitter: reach out to a Crossplane maintainer or steering committee member, see [OWNERS.md][owners].
@@ -38,10 +38,10 @@ examples of each step, assuming vX.Y.Z is being cut.
 [ci-workflow]: https://github.com/crossplane/crossplane/actions/workflows/ci.yml
 [configurations-workflow]: https://github.com/crossplane/crossplane/actions/workflows/configurations.yml
 [new release]: https://github.com/crossplane/crossplane/releases/new
-[owners]: https://github.com/crossplane/crossplane/blob/master/OWNERS.md
+[owners]: https://github.com/crossplane/crossplane/blob/main/OWNERS.md
 [promote-workflow]: https://github.com/crossplane/crossplane/actions/workflows/promote.yml
 [release-1.11.1]: https://github.com/crossplane/crossplane/issues/3796
 [releases table]: https://github.com/crossplane/crossplane#releases
 [releases.crossplane.io]: https://releases.crossplane.io
 [tag-workflow]: https://github.com/crossplane/crossplane/actions/workflows/tag.yml
-[#5420]: https://github.com/crossplane/crossplane/issues/5420#issuecomment-2318294855 
+[#5420]: https://github.com/crossplane/crossplane/issues/5420#issuecomment-2318294855
