@@ -30,7 +30,7 @@ Actions](https://github.com/features/actions) for pipelines.
    channel(s).
 1. **release notes**: Publish well authored and complete release notes on
    GitHub.
-1. **announce**: Announce the release on Twitter, Slack, etc.
+1. **announce**: Announce the release on Crossplane social media accounts.
 
 ## Detailed Process
 
@@ -126,7 +126,7 @@ Now it's time to run the `Tag` action on the release branch.
 
 Run the tag action by going to the repo's "Actions" tab in the Github UI. You
 will be prompted for the desired branch and the version you are tagging. The
-latest commit on the selected branch will be the commit that is tagged. 
+latest commit on the selected branch will be the commit that is tagged.
 
 ### Draft Release Notes
 
@@ -227,12 +227,11 @@ the repo.
 ### Announce Release
 
 We have completed the entire release, so it's now time to announce it to the
-world.  Using the [@crossplane_io](https://twitter.com/crossplane_io) Twitter
-account, tweet about the new release and blog.  You'll see examples from the
-previous releases, such as this tweet for
-[v0.4](https://twitter.com/crossplane_io/status/1189307636350705664).
+world.  Using the Crossplane social media accounts, post about the new release
+and blog.  You'll see examples from the previous releases, such as this tweet
+for [v1.18.0](https://x.com/crossplane_io/status/1853803554370097463).
 
-Post a link to this tweet on the Slack #announcements channel, then copy a link
+Share a link to the social post on the Slack #announcements channel, then copy a link
 to that and post it in the #general channel.
 
 ### Patch Releases
