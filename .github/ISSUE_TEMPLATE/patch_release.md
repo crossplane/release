@@ -31,6 +31,7 @@ examples of each step, assuming vX.Y.Z is being cut.
 - [ ] Ensured that users have been notified of the release on all communication channels:
   - [ ] Slack: `#announcements` channel on Crossplane's Slack workspace.
   - [ ] Twitter: reach out to a Crossplane maintainer or steering committee member, see [OWNERS.md][owners].
+  - [ ] Bluesky: same as Twitter
   - [ ] LinkedIn: same as Twitter
 - [ ] Remove any extra permissions given to release team members for this release
 
