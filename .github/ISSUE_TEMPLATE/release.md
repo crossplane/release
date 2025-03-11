@@ -29,26 +29,27 @@ examples of each step, assuming release vX.Y.0 is being cut.
     - https://github.com/crossplane/crossplane-runtime/pulls?q=is%3Apr+is%3Aopen+label%3Aautomated
   - [ ] Created the release branch using the [GitHub UI][create-branch].
   - [ ] (On the **Main** Branch) Created and merged a PR to add the new release branch to the `baseBranches` list in `.github/renovate.json5`.
-  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
-  - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested, but not required: `Release candidate vX.Y.0-rc.1.`.
+  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0`.
+  - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow-runtime] with the release candidate tag for the next release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested, but not required: `Release candidate vX.Y.0-rc.1`.
 - [ ] **[In Core Crossplane]:** Prepared the release branch `release-X.Y`:
   - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into `main`
     - https://github.com/crossplane/crossplane/pulls?q=is%3Apr+is%3Aopen+label%3Aautomated
   - [ ] Created the release branch using the [GitHub UI][create-branch].
   - [ ] (On the **Main** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag from , `vX.Y+1.0-rc.0`.
   - [ ] (On the **Release** Branch) created and merged a PR bumping the Crossplane Runtime dependency to the release candidate tag on the release branch, `vX.Y.0-rc.1`.
-  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the next release, `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0.`.
+  - [ ] (On the **Main** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the next release, `vX.Y+1.0-rc.0`. Message suggested, but not required: `Release candidate vX.Y+1.0-rc.0`.
   - [ ] (On the **Main** Branch) created and merged a PR to add the new release branch to the `baseBranches` list in `.github/renovate.json5`.
 - [ ] **[In Core Crossplane]:** Cut a Crossplane **release candidate** from the release branch `release-X.Y`:
-  - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested but not required: `Release candidate vX.Y.0-rc.1.`.
+  - [ ] (On the **Release** Branch) Run the [Tag workflow][tag-workflow] with the release candidate tag for the release `vX.Y.0-rc.1` (assuming the latest rc tag for `vX.Y.0` is `vX.Y.0-rc.0`). Message suggested but not required: `Release candidate vX.Y.0-rc.1`.
   - [ ] (On the **Release** Branch) Run the [CI workflow][ci-workflow] and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.0-rc.1/...` should contain all the relevant binaries.
-  - [ ] (On the **Release** Branch) Run the [Promote workflow][promote-workflow] with channel `stable`, ticking the box for `This is a pre-release` and verify:
+  - [ ] (On the **Release** Branch) Run the [Promote workflow][promote-workflow] with version `vX.Y.0-rc.1` and channel `stable`, ticking the box for `This is a pre-release` and verify:
     - [ ] The tagged build version exists on the [releases.crossplane.io] `stable` channel at `stable/vX.Y.0-rc.1/...`.
-    - [ ] The tagged build is NOT marked as "current" in [stable/current/version](https://releases.crossplane.io/stable/current/version).
     - [ ] Ensured that the release candidate is visible on the stable helm repo with: `helm repo add crossplane-stable https://charts.crossplane.io/stable --force-update &&  helm search repo crossplane-stable --devel`.
   - [ ] Published a [new release] for the tagged version as `pre-release`, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
     - [ ] Select the `Set as a pre-release` and `Create a discussion for this release` checkboxes.
     - [ ] Do NOT select the `Set as the latest release` checkbox.
+    - [ ] Use this [example](https://github.com/crossplane/crossplane/releases/tag/v1.19.0-rc.1)
+    for the body of the release.
   - [ ] Ensured that users have been notified about the release candidate on the `#announcement` channel of the Crossplane's Slack workspace.
 
 ### Release
