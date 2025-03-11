@@ -48,37 +48,8 @@ examples of each step, assuming release vX.Y.0 is being cut.
   - [ ] Published a [new release] for the tagged version as `pre-release`, with the same name as the version, taking care of generating the changes list selecting as "Previous tag" `vX.<Y-1>.0`, so the first of the releases for the previous minor.
     - [ ] Select the `Set as a pre-release` and `Create a discussion for this release` checkboxes.
     - [ ] Do NOT select the `Set as the latest release` checkbox.
-    - [ ] Set the body of the release to:
-
-          # ❗ Important
-
-          Crossplane version `vX.Y.Z-rc.1` is a release candidate intended to collect input from the community and offer users an opportunity to experiment with Crossplane in non-production environments before the official release of version `vX.Y.Z`.
-
-          > [!WARNING]
-          > This is a pre-release; do not use it in production environments!
-
-          To install Crossplane with this release:
-
-          ```shell
-          helm repo add crossplane-stable https://charts.crossplane.io/stable --force-update
-          helm install crossplane --namespace crossplane-system --create-namespace crossplane-stable/crossplane --devel
-          ```
-
-          To install the Crossplane CLI with this release:
-
-          ```shell
-          curl -sL https://raw.githubusercontent.com/crossplane/crossplane/v1.19.0-rc.1/install.sh | XP_VERSION=v1.19.0-rc.1 sh
-          ```
-
-          # 🚨 Breaking Changes
-
-          # 🎉 Highlights
-
-          # 📖 Full Changelog
-
-          **Full Changelog**: https://github.com/crossplane/crossplane/compare/vX.Y-1.X...vX.Y.Z-rc.1
-
-
+    - [ ] Use this [example](https://github.com/crossplane/crossplane/releases/tag/v1.19.0-rc.1)
+    for the body of the release.
   - [ ] Ensured that users have been notified about the release candidate on the `#announcement` channel of the Crossplane's Slack workspace.
 
 ### Release
