@@ -55,6 +55,7 @@ This issue can be closed when we have completed the following steps (in order). 
 - [ ] Update CLI reference documentation for the release.
   - [ ] Check out the [crossplane/docs] repository.
   - [ ] In the docs repo, copy the `master` documentation for the new release: `cp -R content/cli/master content/cli/vX.Y`.
+  - [ ] Make the new release the `latest` release by updating `params.cliLatest` in `config.yaml`.
   - [ ] Download the new release binary by running `curl https://cli.crossplane.io/install.sh | sh` and ensure you get the new version. Download directly from [cli.crossplane.io] if needed.
   - [ ] In the docs repo, update the command reference using the new release: `./crossplane generate-docs -o content/cli/vX.Y/command-reference.md`.
   - [ ] Create and merge a PR with the updated content.
