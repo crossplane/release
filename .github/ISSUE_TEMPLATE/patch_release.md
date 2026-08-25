@@ -32,6 +32,7 @@ examples of each step, assuming vX.Y.Z is being cut.
     - [ ] **[In Core Crossplane]:** (On the **Release** Branch) Open and merge a PR updating the Crossplane Runtime dependency to `vX.Y.Z`.
 - [ ] Confirm that all security/critical dependency update PRs from Renovate are merged into the `release-X.Y` branch
   - https://github.com/crossplane/crossplane/pulls?q=is%3Apr+is%3Aopen+label%3Aautomated
+- [ ] (On the **Release** Branch) Open and merge a PR bumping the `github.com/crossplane/crossplane/apis/v2` requirement in `go.mod` to `vX.Y.Z` (`release-2.3` and newer only). Can be folded into the Crossplane Runtime bump PR above.
 - [ ] Run the [Tag workflow][tag-workflow] on the `release-X.Y` branch with the proper release version, `vX.Y.Z`. Message suggested, but not required: `Release vX.Y.Z`.
 - [ ] Run the [CI workflow][ci-workflow] on the release branch and verified that the tagged build version exists on the [releases.crossplane.io] `build` channel, e.g. `build/release-X.Y/vX.Y.Z/...` should contain all the relevant binaries.
 - [ ] Confirm the full set of patch versions that will be released and promote them from lowest to highest, so the **highest** version is the **last** to be promoted (e.g. `v1.12.2` should be promoted after `v1.11.3`), in order to avoid the promote workflow overwriting the latest patch release.
